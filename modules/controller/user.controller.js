@@ -32,7 +32,7 @@ const signUp = async(req,res)=>{
        if(user){
           becrypt.compare(password,user.password,function (err,result){
              if (result) {
-                let token = jwt.sign({name:user.first_name + user.last_name,email:email,age:user.age,isLogin:true},process.env.JWTKEY)
+                let token = jwt.sign({name:user.first_name + " " + user.last_name,email:email,age:user.age,isLogin:true},process.env.JWTKEY)
     
                 res.status(StatusCodes.ACCEPTED).json({massage:"welcome",token})
              }else{
